@@ -1,7 +1,9 @@
 Autor: Alison Joselyn Fernández Martínez
 Practica: Semaforo Durmiente
+Software: Se utilizo software libre para programar y diagramar: Arduino y Fritzing.
 
 En el siguiente programa se muestra un ejemplo de semaforo durmiente con Leds.
+
 Se tienen 2 semaforos, el de automoviles que cuenta con 3 leds (verde, amarillo y rojo) y
   el semaforo de peatones que cuenta con 2 leds (verde y rojo).
 Se inicia con el led verde de los automoviles encendido y el led rojo de los peatones apagado.
@@ -40,3 +42,13 @@ Materiales:
 * 1 potenciometro de 10 k ohms
 * Conectores MM
 * 1 protoboard
+
+DIAGRAMA:
+![Imagen Diagrama](DIAGRAMA/SemaforoDurmiente.jpg "Diagrama")
+
+CIRCUITO:
+![Imagen Circuito](IMAGENES/sd1.jpg "Circuito")
+
+SOFTWARE:
+![Imagen Fritzing](SOFTWARELIBRE/Fritzing.png "Fritzing")
+![Imagen Arduino](SOFTWARELIBRE/Arduino.png "Arduino")
