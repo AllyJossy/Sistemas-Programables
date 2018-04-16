@@ -1,5 +1,5 @@
 Autor: Alison Joselyn Fernández Martínez
-Practica: Semaforo Durmiente
+Practica: Programa de Java-Arduino con LCD
 Software: Se utilizo software libre para programar y diagramar: Arduino y Fritzing.
 
 Programa de Arduino-Java con LCD
@@ -11,8 +11,18 @@ Programa de Arduino-Java con LCD
           2. Display (Parpadeo de mensaje: Sistemas Programables)
           3. Serial Display (Entrada de mensaje por Serial o Java)
 
-En el siguiente programa se muestra un ejemplo de un programa de Arduino con Java que mide la temperatura, 
-lee la hora y muestra mensajes.
+CONTENIDO:
+	Java-Arduino-LCD
+		Java-Arduino-LCD-ino: Programa de Arduino
+		Readme.txt: Contiene la informacion del programa
+
+		DIAGRAMA: Contiene el diagrama del circuito
+		IMAGENES: Contiene imagenes de evidencia del funcionamiento del programa.
+		Java_Arduino_LCD: Contiene el programa en Java con la interfaz
+		SOFTWARELIBRE: Contiene capturas que muestran el uso  de Software Libre
+		VIDEOS: Contiene videos de evidencia del funcionamiento del programa.
+
+En el siguiente programa se muestra un ejemplo de un programa de Arduino con Java que mide la temperatura, lee la hora y muestra mensajes.
 
 Inicia con el mensaje: Alison Fernández
 
@@ -43,11 +53,12 @@ Materiales:
 * 1 Arduino Uno
 * Cable USB tipo AB
 * Conectores MM
-* 1 protoboard
-* 1 pantalla LiquidCrystal
+* 1 Protoboard
+* 1 Pantalla LiquidCrystal
 * 1 Sensor de Temperatura LM35
 * 1 Modulo RTC DS3231
-* 5 push button
-* 1 potenciometro de 10 k ohms
-* 5 resistencias de 1k ohm
-* 1 resistencia de 220 ohms
+* 5 Push button
+* 2 Potenciometro de 10 k ohms
+* 5 Resistencias de 1k ohm
+* 1 Resistencia de 220 ohms
+
