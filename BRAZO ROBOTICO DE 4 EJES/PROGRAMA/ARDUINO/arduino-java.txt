@@ -1,0 +1,14 @@
+//Codigo para leer datos desde Java
+
+int Byte_entrada = 0;   // Variable para leer el valor del botón presionado en java
+
+loop() {   
+Byte_entrada = Serial.read();     // Se leen los datos transmitidos desde java
+	if (Byte_entrada == '0') {        // Si el botón de inicio es presionado en java
+		….
+	} else if (Byte_entrada == '1') { // Si el boton de abortar es presionado en java
+		....
+	} else { // Si es ingresada una cadena de texto con los pasos del programa en java
+		…
+	}
+}
