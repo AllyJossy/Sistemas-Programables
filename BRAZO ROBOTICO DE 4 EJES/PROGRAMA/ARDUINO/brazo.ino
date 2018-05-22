@@ -17,8 +17,8 @@ boolean cargada = false;
 String txt_lcd_1 = "", txt_lcd_2 = "";
 
 //String secuencia_default = "abcdefzaghdyaf";
-String secuencia = "";
 //String secuencia = "";
+String secuencia = "";
 int i=0;
 
 void setup() {  
@@ -38,7 +38,7 @@ void setup() {
   
   analogWrite(A0, 70);
 
-  recuperaEstado();
+ / recuperaEstado();/
    
 }
 
@@ -57,7 +57,7 @@ void loop() {
   
   
   i = i >= secuencia.length() ? 0 : i+1; 
-  guardarEstado(i,secuencia);
+ // guardarEstado(i,secuencia);
   
   
   switch( secuencia[i] ){
@@ -217,4 +217,5 @@ void actualizaEstado(int howMany){
 
   secuencia = sec;
 }
+
 
