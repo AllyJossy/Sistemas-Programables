@@ -20,10 +20,31 @@ Características principales: 
     	-La "Base", o "Cintura", por lo general puede girar el brazo 180o o 360o, dependiendo del   tipo de Servo utilizado (aquí en este proyecto, se debe utilizar un motor a pasos para girar 360o)             
     	-El "Hombro" es el responsable de "levantar o bajar" el brazo verticalmente             
     	-El "Codo" hará que el brazo "avance o retroceda".             
-    	-La "Garra" o "Pinza" funciona abriendose o cerrándose para "agarrar cosas".
+    	-La "Garra" o "Pinza" funciona abriéndose o cerrándose para "agarrar cosas".
+
+Aplicación de Java:
+    Cuenta con un campo de texto y 4 botones diferentes:
+	- Iniciar: Inicia el programa predeterminado del brazo
+	- Abortar: Aborta en programa en ejecución. 
+	- Campo de Texto: Recibe una cadena de texto con los pasos para crear un nuevo programa.
+	- Enviar: EnEnvía los datos que se encuentran en el campo de texto para la ejecución del programa.
+	- Instrucciones: Muestra las instrucciones del brazo.
+
+Pasos:
+	- a: Subir
+	- b: Poner la base en la posición inicial
+	- c: Bajar brazo
+	- d: Abrir pinza
+	- e: Adelante
+	- f: Cerrar pinza
+	- g: Girar base a la derecha
+	- h: Acercar brazo a la base
+	- i: Girar base a la izquierda
+	- y: Mandar mensaje de que el brazo está cargado
+	- z: Mandar mensaje de que el brazo no tiene carga
 
 Materiales:
-	* Arduino Uno
+	* 2 Arduino Uno
 	* Cable USB tipo AB
 	* 1 Protoboard
 	* Conectores MM
