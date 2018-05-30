@@ -68,9 +68,10 @@ CONTENIDO:
 	DIAGRAMA: Contiene el diagrama del circuito
 	IMAGENES: Contiene imagenes de evidencia del funcionamiento del programa.
 	PROGRAMA: Contiene los programas en Java y Arduino para el funcionamiento del brazo.
-		ARDUINO: Programas de Arduino para manejar el brazo.
+		ARDUINO: Programas de Arduino para manejar el brazo y un Carrito como complemento.
 			MasterWriter_Brazo_Java: Programa que se comunica con el programa en java y recibe las instrucciones, asi mismo envia a el MasterReader las instrucciones a ejecutar.
 			MasterReader_Brazo_Java: Programa que recibe las instrucciones a ejecutar en el brazo.
+			Carrito_Brazo: Programa para manejar el carrito como complemento al brazo robotico.
 		JAVA: Contiene el programa en Java con la interfaz para manejar el brazo.
 	SOFTWARE LIBRE: Contiene capturas que muestran el uso  de Software Libre.
 	VIDEOS: Contiene videos de evidencia del funcionamiento del programa.
