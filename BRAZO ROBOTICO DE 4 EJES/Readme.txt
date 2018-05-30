@@ -45,7 +45,7 @@ Pasos:
 
 Materiales:
 	* 2 Arduino Uno
-	* Cable USB tipo AB
+	* 2 Cable USB tipo AB
 	* 1 Protoboard
 	* Conectores MM
 	* 1 potenciometro de 10 k ohms
@@ -68,8 +68,10 @@ CONTENIDO:
 	DIAGRAMA: Contiene el diagrama del circuito
 	IMAGENES: Contiene imagenes de evidencia del funcionamiento del programa.
 	PROGRAMA: Contiene los programas en Java y Arduino para el funcionamiento del brazo.
-		ARDUINO: Programa de Arduino.
-		JAVA: Contiene el programa en Java con la interfaz.
+		ARDUINO: Programas de Arduino para manejar el brazo.
+			MasterWriter_Brazo_Java: Programa que se comunica con el programa en java y recibe las instrucciones, asi mismo envia a el MasterReader las instrucciones a ejecutar.
+			MasterReader_Brazo_Java: Programa que recibe las instrucciones a ejecutar en el brazo.
+		JAVA: Contiene el programa en Java con la interfaz para manejar el brazo.
 	SOFTWARE LIBRE: Contiene capturas que muestran el uso  de Software Libre.
 	VIDEOS: Contiene videos de evidencia del funcionamiento del programa.
 

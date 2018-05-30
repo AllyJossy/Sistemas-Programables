@@ -144,11 +144,11 @@ public class Instrucciones_Brazo extends javax.swing.JDialog {
 
         jLabel30.setText("Muestra las instrucciones del brazo");
 
-        jLabel31.setText("Envia la cadena de texto con los pasos al brazo");
+        jLabel31.setText("Envia los datos que se encuentran en el campo de texto para la ejecución del programa. ");
 
         jLabel32.setText("Recibe una cadena de texto con los pasos para crear un nuevo programa");
 
-        jLabel33.setText("Aborta el programa");
+        jLabel33.setText("Aborta el programa en ejecución.");
 
         jLabel34.setText("Inicia el programa predeterminado del brazo");
 

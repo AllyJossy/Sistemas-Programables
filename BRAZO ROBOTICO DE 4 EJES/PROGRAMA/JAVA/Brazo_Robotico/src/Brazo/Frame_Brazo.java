@@ -21,11 +21,11 @@ public class Frame_Brazo extends javax.swing.JFrame {
 
     private static final String b_inicio = "0";
     private static final String b_abortar = "1";
-    private static String cadena = "a";
+    private static String cadena = "";
     
     private OutputStream output = null;
     SerialPort serialPort;
-    private final String PUERTO = "/dev/cu.usbmodem1421";
+    private final String PUERTO = "/dev/cu.usbmodem1411";
     
     private static final int TIMEOUT = 2000;
     private static final int DATA_RATE = 9600;
@@ -74,6 +74,7 @@ public class Frame_Brazo extends javax.swing.JFrame {
      private void enviarDatos(String datos){
         try{
             output.write(datos.getBytes());
+            System.out.println(datos.getBytes());
         } catch(Exception e){
             mostrarError("ERROR");
             System.exit(ERROR);
@@ -154,6 +155,11 @@ public class Frame_Brazo extends javax.swing.JFrame {
         instruccionesB.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         instruccionesB.setForeground(new java.awt.Color(0, 0, 51));
         instruccionesB.setText("Instrucciones");
+        instruccionesB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                instruccionesBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,13 +235,20 @@ public class Frame_Brazo extends javax.swing.JFrame {
     private void pasosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasosBActionPerformed
         // TODO add your handling code here:
         cadena = pasosB.getText();
-        enviarDatos(cadena);
     }//GEN-LAST:event_pasosBActionPerformed
 
     private void enviarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarBActionPerformed
         // TODO add your handling code here:
-        new Instrucciones_Brazo(this, true);
+        enviarDatos("x");
+        for(int i=0, l=cadena.length(); i<l; i++ ){
+            enviarDatos(String.valueOf(cadena.charAt(i)));
+        }
     }//GEN-LAST:event_enviarBActionPerformed
+
+    private void instruccionesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instruccionesBActionPerformed
+        // TODO add your handling code here:
+        new Instrucciones_Brazo(this, true);
+    }//GEN-LAST:event_instruccionesBActionPerformed
 
     /**
      * @param args the command line arguments

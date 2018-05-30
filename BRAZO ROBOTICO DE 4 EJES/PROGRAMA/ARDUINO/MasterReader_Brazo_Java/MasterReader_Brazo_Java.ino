@@ -7,25 +7,25 @@
 #define IN3  9
 #define IN4  10
 
-LiquidCrystal lcd(5, 4, 3, 2, 1, 0);
+const int rs = 1, en = 2, d4 = 3, d5 = 4, d6 = 5, d7 = 6;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 Servo altura, pinza, frente;
-int inter = 400;
-int gradosBase = 0;
-int caso = 0;
-boolean cargada = false;
-String txt_lcd_1 = "", txt_lcd_2 = "";
+int gradosBase, caso;
+boolean cargada, pause=false;
+String txt_lcd_1, txt_lcd_2;
 
-//String secuencia_default = "abcdefzaghdyaf";
-//String secuencia = "";
-String secuencia = "";
-int i=0;
+int ledAzul = 14;
+int ledRojo = 15;
+int boton = 16;
+
 
 void setup() {  
-  
-  altura.attach(11);
-  pinza.attach(12);
-  frente.attach(13);
+  gradosBase = 0;
+  caso = 0;
+  cargada = false;
+  txt_lcd_1 = "";
+  txt_lcd_2 = "";
 
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
@@ -34,16 +34,35 @@ void setup() {
 
   lcd.begin(16, 2);
   
-  pinMode(A0, OUTPUT);
-  
-  analogWrite(A0, 70);
+  recuperaEstado();
 
- / recuperaEstado();/
-   
+  pinMode(ledAzul, OUTPUT);
+  pinMode(ledRojo, OUTPUT);
+  pinMode(boton, INPUT);
 }
 
 void loop() {
+  if( digitalRead(boton) == LOW){
+    delay(1000);
+    pause=!pause;
+  }
+}
 
+void recuperaEstado(){
+  Wire.begin(1);
+  Wire.onReceive(ejecutaFuncion);
+}
+
+void ejecutaFuncion(int howMany){
+  
+  
+  pinMode(11, INPUT);
+  pinMode(12, INPUT);
+  pinMode(13, INPUT);
+
+  altura.attach(11);
+  pinza.attach(12);
+  frente.attach(13);
   /*
   a: defaultt();
   b: defaultBase();
@@ -54,33 +73,47 @@ void loop() {
   g: girarDerecha();
   h: preparaDescarga();
   */
+  char ejecutar = Wire.read();
+  if(pause) ejecutar='t';
   
-  
-  i = i >= secuencia.length() ? 0 : i+1; 
- // guardarEstado(i,secuencia);
-  
-  
-  switch( secuencia[i] ){
-    case 'a'  : defaultt();       break;
-    case 'b'  : defaultBase();    break;
-    case 'c'  : topeAbajo();      break;
-    case 'd'  : abrir();          break;
-    case 'e'  : preparaPinza();   break;
-    case 'f'  : cerrar();         break;
-    case 'g'  : girarDerecha();   break;
-    case 'h'  : preparaDescarga();break;
-    case 'z'  : cargada = true;   break;
-    case 'y'  : cargada = false;  break;
+   switch( ejecutar ){
+    case 'a'  : 
+      defaultt();       
+      break;
+    case 'b'  : 
+      girarIzquierda(); 
+      break;
+    case 'c'  : 
+      topeAbajo();      
+      break;
+    case 'd'  : 
+      abrir();          
+      break;
+    case 'e'  : 
+      preparaPinza();   
+      break;
+    case 'f'  : 
+      cerrar();         
+      break;
+    case 'g'  : 
+      girarDerecha();   
+      break;
+    case 'h'  : 
+      preparaDescarga();
+      break;
+    case 'i'  : 
+      cargada = true;   
+      break;
+    case 'j'  : 
+      cargada = false;  
+      break;
   }
 
-  //recuperaEstado();
   
-  //txt_lcd_2 = cargada ? "Pinza cargada" : ""; 
-  
+  txt_lcd_2 = cargada ? "Pinza cargada" : ""; 
   actualizaLCD();
-  
-  delay(inter);
 }
+
 
 void actualizaLCD(){
   lcd.begin(16, 2);
@@ -95,6 +128,7 @@ void topeAbajo() {
   txt_lcd_1 = "Bajando ..";
   frente.write(110);
   altura.write(20);
+  digitalWrite(ledAzul, HIGH);
 }
 
 
@@ -103,12 +137,15 @@ void defaultt() {
   txt_lcd_1 = "Posicion base ..";
   altura.write(60);
   frente.write(30);
+  digitalWrite(ledAzul, HIGH);
+  
 }
 
 void abrir() {
   
   txt_lcd_1 = "Abriendo ..";
   pinza.write(80);
+  digitalWrite(ledAzul, HIGH);
 }
 
 
@@ -116,6 +153,7 @@ void cerrar() {
   
   txt_lcd_1 = "Cerrando ..";
   pinza.write(105);
+  digitalWrite(ledAzul, HIGH);
 
 }
 
@@ -124,6 +162,7 @@ void preparaDescarga() {
   txt_lcd_1 = "Prepara descarga ..";
   frente.write(62);
   altura.write(45);
+  digitalWrite(ledAzul, HIGH);
 }
 
 
@@ -131,6 +170,7 @@ void defaultBase() {
   txt_lcd_1 = "Girando base..";
   actualizaLCD();
   girarBase( gradosBase * (-1), 3 );
+  digitalWrite(ledAzul, HIGH);
 }
 
 
@@ -138,12 +178,21 @@ void girarDerecha(){
   txt_lcd_1 = "Gira derecha";
   actualizaLCD();
   girarBase(130, 3);
+  digitalWrite(ledAzul, HIGH);
+}
+
+void girarIzquierda(){
+  txt_lcd_1 = "Gira izquierda";
+  actualizaLCD();
+  girarBase(-130, 3);
+  digitalWrite(ledAzul, HIGH);
 }
 
 
 void preparaPinza(){
   txt_lcd_1 = "Recoge carga";
   altura.write(80);
+  digitalWrite(ledAzul, HIGH);
 }
 
 void motorBase(int a, int b, int c, int d) {
@@ -184,38 +233,3 @@ void girarBase(int grados, int intervalo) {
       delay(intervalo);
     }
 }
-
-void guardarEstado(int estado, String secuencia){
-  Wire.begin();
-  Wire.beginTransmission(1);
-  Wire.write(estado);
-  Wire.write(secuencia.length());
-  for(int i=0, l=secuencia.length(); i<l; i++){
-    Wire.write(secuencia[i]);
-  }
-  Wire.endTransmission();
-}
-
-void recuperaEstado(){
-  Wire.begin(2);
-  Wire.onReceive(actualizaEstado);
-}
-
-void actualizaEstado(int howMany){
-
-   
-  int secuencia_l;
-  String sec = "";
-  char c;
-
-  i = Wire.read();
-  secuencia_l = Wire.read();
-  for(int j=0; j<secuencia_l; j++){
-    c = Wire.read();
-    sec = sec + c;
-  }
-
-  secuencia = sec;
-}
-
-
