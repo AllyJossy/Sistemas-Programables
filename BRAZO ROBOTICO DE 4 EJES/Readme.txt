@@ -61,10 +61,22 @@ Materiales:
 	* Modulo Micro SD
 	* Pequeñas cajas que son transportadas por el brazo.
 
+Materiales Carrito:
+	* 2 Motores DC
+	* 2 Leds
+	* 1 Arduino Uno
+	* 1 Cable USB tipo AB
+	* 1 Protoboard
+	* 1 Modulo Bluetooth HC-06
+	* 1 Controlador L298 N Motor Surucu
+	* 1 Bateria de 9v
+	* 1 Power Bank
+
 CONTENIDO:
 	Readme.txt: Contiene la informacion del programa
 	arm.jpg: Imagen de un Brazo Robótico
 	brazo.png: Imagen que muestra el Brazo Robótico y sus articulaciones
+	Brazo.png: Imagen muestra del Brazo Robotico Armado.
 	DIAGRAMA: Contiene el diagrama del circuito
 	IMAGENES: Contiene imagenes de evidencia del funcionamiento del programa.
 	PROGRAMA: Contiene los programas en Java y Arduino para el funcionamiento del brazo.
@@ -74,7 +86,3 @@ CONTENIDO:
 			Carrito_Brazo: Programa para manejar el carrito como complemento al brazo robotico.
 		JAVA: Contiene el programa en Java con la interfaz para manejar el brazo.
 	SOFTWARE LIBRE: Contiene capturas que muestran el uso  de Software Libre.
-	VIDEOS: Contiene videos de evidencia del funcionamiento del programa.
-
-BRAZO:
-![Imagen Diagrama](brazo.png "Brazo Robótico  y sus Articulaciones")
